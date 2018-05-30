@@ -27,7 +27,7 @@ for i in $(ls *_Prokka.faa); do cat $i | grep '>' | sed 's/ /\t/' | sed 's/>//' 
 
 - Inclusion of the homolog locus tag in the gbk file
 
-                        - dsfdsf
+      - In R use of script:   . This create a template of genome-wide homologs of each gene to a reference strain.
 
 
 
