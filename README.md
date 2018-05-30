@@ -27,6 +27,8 @@ for i in $(ls *_Prokka.faa); do cat $i | grep '>' | sed 's/ /\t/' | sed 's/>//' 
 
 - Inclusion of the homolog locus tag in the gbk file
 
+                        - dsfdsf
+
 
 
 # 3. Submission to NCBI 
