@@ -14,7 +14,7 @@ for i in $(ls *.fa); do echo $i; bsub -q normal -L /bin/bash -J $(echo $i | cut 
 
 # 2. Modification of gbk files
 
-- Inclusion of the locus tag of the gene homologs on a related strain.
+- Identification of the locus tag of the gene homologs on a related strain.
 
       -Make protein db with the new anotations
 a=0;for i in $(ls Annotation*/*.faa); do echo $(echo $i | cut -d'/' -f2|cut -d'_' -f1) ;makeblastdb -dbtype prot -in $i -parse_seqids -out db_Prokka_protein/$(echo $i | cut -d'/' -f2|cut -d'_' -f1)_db ; done
@@ -24,6 +24,9 @@ a=0;for i in $(ls *.faa); do echo $(echo $i | cut -d'_' -f1,2,3) ;blastp -db db_
 
       -Create GENENAMES files per strains
 for i in $(ls *_Prokka.faa); do cat $i | grep '>' | sed 's/ /\t/' | sed 's/>//' | cut -f1 > db_Prokka_protein/$(echo $i | cut -d'_' -f3).GeneNames ; done
+
+- Inclusion of the homolog locus tag in the gbk file
+
 
 
 # 3. Submission to NCBI 
