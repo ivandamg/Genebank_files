@@ -60,7 +60,33 @@ Inclusion of the homolog locus tag in the gbk file
 
                 4. Copy paste on bash
 
+# 3. Create gene homology plot between two strains.
 
+Blast each strain to the other
+
+   - Make protein db with the new anotations
+     
+            a=0;for i in $(ls *.faa); do echo $(echo $i | cut -d'_' -f1) ;makeblastdb -dbtype prot -in $i -parse_seqids -out db_protein/$(echo $i |cut -d'_' -f1)_db ; done
+
+   - Blastp REFERENCE proteins TO new assemblies proteins. Change reference
+
+            a=0;for i in $(ls *.faa); do echo $(echo $i | cut -d'_' -f1) ;blastp -db db_protein/$(echo $i | cut -d'_' -f1)_db -outfmt 6 -evalue 1e-8 -show_gis -num_alignments 1 -max_hsps 20 -num_threads 30 -out db_protein/Blast_$(echo $i | cut -d'_' -f1)_IN_N16961Blokesch_.xml -query N16961Blokesch_Prokka.faa ; done
+
+   - Extract Gene names 
+
+            for i in $(ls *.faa); do cat $i | grep ">" | cut -d' ' -f1 | sed 's/>//' > $(echo $i | cut -d'_' -f1).GeneNames ; done
+           
+   - Extracting Gene Name of 1st gene on 2nd chromosome. Look at gbk file and extract the name of the first gene of chromosome 1 and chromosome 2. 
+    This will be the first command in r:
+    
+            Chr2A1552_1stGene<-"VC-A1552Blokesch_02796"
+            Chr2N16961_1stGene<-"VC-N16961Blokesch_02736"
+            Chr2Sa5Y_1stGene<-"VC-Sa5YBlokech_02729"
+
+   - In R use of Script:
+        
+            Template_HomologyPlot_between_prot_2_strainsV2.R This script will : filter the blast matchs, and produce a heatmap of gene presence/absence between two strains, for two different chromosomes.
+    
 
 
 # 3. Submission to NCBI 
