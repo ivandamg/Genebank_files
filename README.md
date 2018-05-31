@@ -95,5 +95,25 @@ In R use of Script:
 
 # 3. Submission to NCBI 
 
+[Guidelines from Genome NCBI submission]
+    - gene names: no repeated names ex: "tfoX1_1 (tfoY)"  ->  gene_name ="tfoX_1" gene_syn= "TfoY"  
+    - locus tag: no "-"  ex: Sa5Y-chr1_0001 -> Sa5Y_0001      Sa5y-chr2_0001 -> Sa5Y_A0001
+    - misc_RNA feature do not exist. change to one category from http://www.insdc.org/rna_vocab.html. or misc_feature
+    - note: change NC_0024.._001 to NC0023.._001
+
+-  use gbf2tbl.pl to create annotated file to put in ncbi 
+                
+                perl gbf2tbl.pl Vibrio_cholerae_N16961-BlokeschLab.gbk
+
+- Modify template.sbt with info about authors of genome submission
+
+- use tbl2asn to create .sqn file ready to upload and submit
+
+        tbl2asn -a s -V v -c b -Z discrep -i Vibrio_cholerae_N16961-BlokeschLab.fsa -f Vibrio_cholerae_N16961-BlokeschLab.tbl -t template.sbt -X C
+
+-Upload .sqn file with custom annotation on NCBI 
+           
+    
+
 
 
