@@ -28,6 +28,28 @@ for i in $(ls *_Prokka.faa); do cat $i | grep '>' | sed 's/ /\t/' | sed 's/>//' 
 - Inclusion of the homolog locus tag in the gbk file
 
       - In R use of script: TemplateCreation_Homolog_to_referenceStrain_V2.R . This create a template of genome-wide homologs of each gene to a reference strain.
+      
+      - Modify original .gbk file in text editor (i.e. sublime). 
+      
+            - add a new space to replace info
+                  1. replace: /locus_tag="Ab_(\w+)"\n  for /locus_tag="Ab_\1"\n\t\t\t\t\t\t\t/note="Ab_\1"\n
+                  2. save with different name (i.e. ANNO IM)
+                  
+            - Final modification of .gbk file. Create modifications comands in a file to be applied in bash.
+                  1. Open in sublime the LOCUSomology file created by the Rscript. (i.e LocusHomology_VC-Sa5Y.txt )
+                  2. replace file by the respective annotation
+                        replace :  
+                                    #         ^             with    cat 
+                                    #         \tVC          WITH     | sed 's/\\/note="VC
+                                    #         \tin          with    "/\\/note="in
+                                    #         \t            with    "/' > 
+                                    #         ' > NA"/'     WITH    \\/note="NA"/'
+                  3. Add end of file : cat the last temp file and remove the temporary files temp*  
+                                    # cat temp3610 > VC-A1552_Annotated.gbk 
+                                    #  rm temp*
+
+                  4. Copy paste on bash
+
 
 
 
