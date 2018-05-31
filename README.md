@@ -111,7 +111,7 @@ In R use of Script:
 
         tbl2asn -a s -V v -c b -Z discrep -i Vibrio_cholerae_N16961-BlokeschLab.fsa -f Vibrio_cholerae_N16961-BlokeschLab.tbl -t template.sbt -X C
 
--Upload .sqn file with custom annotation on NCBI 
+- Upload .sqn file with custom annotation on NCBI 
            
     
 
