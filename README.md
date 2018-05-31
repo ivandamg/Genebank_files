@@ -59,6 +59,10 @@ Inclusion of the homolog locus tag in the gbk file
                                     #  rm temp*
 
                 4. Copy paste on bash
+                    ex: cat Vibrio_cholerae_A1552-BlokeschLab_v4.gbk | sed 's/\/note="NC002505_VC0002"/\/note="NC002505_VC0002"\n\/gene_syn="mioC"/' > temp1
+                    cat temp1 | sed 's/\/note="NC002505_VC0003"/\/note="NC002505_VC0003"\n\/gene_syn="trmE_mnmE"/' > temp2
+                    cat temp2 > Vibrio_cholerae_A1552-BlokeschLab_v5.gbk
+
 
 # 3. Create gene homology plot between two strains.
 
