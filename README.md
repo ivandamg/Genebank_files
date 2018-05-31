@@ -35,7 +35,7 @@ Inclusion of the homolog locus tag in the gbk file
 
  - In R use of script: 
       
-       TemplateCreation_Homolog_to_referenceStrain_V2.R . This create a template of genome-wide homologs of each gene to a reference strain.
+     TemplateCreation_Homolog_to_referenceStrain_V2.R . This create a template of genome-wide homologs of each gene to a reference strain.
       
  - Modify original .gbk file in text editor (i.e. sublime). 
       
@@ -83,9 +83,9 @@ Blast each strain to the other
             Chr2N16961_1stGene<-"VC-N16961Blokesch_02736"
             Chr2Sa5Y_1stGene<-"VC-Sa5YBlokech_02729"
 
-   - In R use of Script:
+In R use of Script:
         
-            Template_HomologyPlot_between_prot_2_strainsV2.R This script will : filter the blast matchs, and produce a heatmap of gene presence/absence between two strains, for two different chromosomes.
+  Template_HomologyPlot_between_prot_2_strainsV2.R This script will : filter the blast matchs, and produce a heatmap of gene presence/absence between two strains, for two different chromosomes.
     
 
 
