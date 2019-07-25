@@ -13,6 +13,10 @@ on Vital-IT cluster:
 
     for i in $(ls *.fa); do echo $i; bsub -q normal -L /bin/bash -J $(echo $i | cut -d'_' -f3) -u ivan.mateusgonzalez@epfl.ch -n 8 -R "rusage[mem=2000]" -M 2000000  -N  " module add UHTS/Analysis/prokka/1.12; module add UHTS/Analysis/rnammer/1.2;  module add UHTS/Analysis/LMAT/1.2.6; module add SequenceAnalysis/HMM-Profile/hmmer/3.1b2; module add SequenceAnalysis/SequenceAlignment/tbl2asn/25.3; prokka --outdir Annotation_$(echo $i | cut -d'_' -f3) --genus $(echo $i | cut -d'_' -f1) --species $(echo $i | cut -d'_' -f2) --strain $(echo $i | cut -d'_' -f3)  --cpus 8 --locustag Sp_$(echo $i | cut -d'_' -f3) --prefix $(echo $i | cut -d'_' -f1,2,3)_Prokka --rfam --usegenus $i " ;  done
 
+# 2a. Creation of .gbf files
+
+https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/#tbl
+
 
 # 2. Modification of gbk files
 
